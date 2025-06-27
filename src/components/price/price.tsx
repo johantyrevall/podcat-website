@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import {useState } from 'react'
 
 const FeatureItem = ({ text }: { text: string }) => (
     <div className='flex flex-row items-center justify-start ms-20 mt-2'>
@@ -8,27 +9,61 @@ const FeatureItem = ({ text }: { text: string }) => (
     </div>
 );
 
+const paymentOptions = [
+  { label: 'Per avsnitt', value: 'per_avsnitt' },
+  { label: 'Per månad', value: 'per_manad' }
+];
+
+const audioLengths = [
+  { label: '30 min', value: 30 },
+  { label: '60 min', value: 60 },
+  { label: '90 min', value: 90 }
+];
+
+const priceTable = {
+  per_avsnitt: { 30: 1000, 60: 1500, 90: 2000 },
+  per_manad: { 30: 800, 60: 1200, 90: 1600 }
+};
+
 function Price() {
+    // const [price, setPrice ] = useState(1000);
+    const [paymentType, setPaymentType] = useState('per_avsnitt');
+    const [audioLength, setAudioLength] = useState(30);
+
+    const price = priceTable[paymentType][audioLength];
+
     return (
-        <div className='flex flex-col items-center h-screen bg-[#F0F0F0]'>
+        <div id='pricing' className='flex flex-col items-center h-screen bg-[#F0F0F0]'>
             <h2 className='text-6xl font-medium mt-10 mb-5'>Prisexempel</h2>
             <p className='text-xl'>Betala per avsnitt eller per månad</p>
             <div className='flex flex-row gap-x-8 mb-5 mt-3'>
-                <button className='bg-[#0000FF] text-white font-semibold rounded-full h-12 w-55'>Per avsnitt</button>
-                <div className="relative inline-block">
-                    <button className='bg-white border-2 hover:bg-blue-50 border-[#0000FF] font-semibold rounded-full h-12 w-55'>
-                        Per månad
-                    </button>
-                    <div className="absolute -top-3 -right-5 bg-[#FF0000] text-white text-xs font-bold rounded-md px-1 py-1 shadow">
-                        Spara 27%
+                {paymentOptions.map(option => (
+                    <div key={option.value} className={option.value === 'per_manad' ? "relative inline-block" : ""}>
+                        <button
+                            className={
+                                paymentType === option.value
+                                    ? 'bg-[#0000FF] text-white font-semibold rounded-full h-12 w-55 cursor-pointer'
+                                    : 'bg-white border-2 hover:bg-blue-50 border-[#0000FF] font-semibold rounded-full h-12 w-55 cursor-pointer'
+                            }
+                            onClick={() => setPaymentType(option.value)}
+                        >
+                            {option.label}
+                        </button>
+                        {option.value === 'per_manad' && (
+                            <div className="absolute -top-3 -right-5 bg-[#FF0000] text-white text-xs font-bold rounded-md px-1 py-1 shadow">
+                                Spara 20%
+                            </div>
+                        )}
                     </div>
-                </div>
+                ))}
             </div>
             <div className='bg-[#E9EBF8] flex flex-col items-center justify-center w-xl p-5 shadow-xl'>
                 <p className='text-lg'>Från</p>
                 <div className='flex flex-row items-center'>
-                    <p className='text-5xl font-bold'>1000 SEK</p>
-                    <p className='text-lg'>/avsnitt</p>
+                    <p className='text-5xl font-bold'>{price} SEK</p>
+                    <p className='text-lg'>
+                        {paymentType === 'per_avsnitt' ? '/avsnitt' : '/avsnitt'}
+                    </p>
                 </div>
             </div>
             <div className='bg-white w-xl pt-2 shadow-xl'>
@@ -46,11 +81,22 @@ function Price() {
             <div className='bg-white w-xl flex flex-col items-center justify-center shadow-xl'>
                 <p className='text-lg'>Hur lång är din råa ljudfil?</p>
                 <div className='flex flex-row gap-x-8 m-3'>
-                    <button className='bg-[#0000FF] text-white font-semibold rounded-full h-12 w-30'>30 min</button>
-                    <button className='bg-white border-2 border-[#0000FF] font-semibold rounded-full h-12 w-30'>60 min</button>
-                    <button className='bg-white border-2 border-[#0000FF] font-semibold rounded-full h-12 w-30'>90 min</button>
+                {audioLengths.map(length => (
+                        <button
+                            key={length.value}
+                            className={
+                                audioLength === length.value
+                                    ? 'bg-[#0000FF] text-white font-semibold rounded-full h-12 w-30 cursor-pointer'
+                                    : 'bg-white border-2  hover:bg-blue-50 border-[#0000FF] font-semibold rounded-full h-12 w-30 cursor-pointer'
+                            }
+                            onClick={() => setAudioLength(length.value as 30 | 60 | 90)}>
+                            {length.label}
+                        </button>
+                    ))}
                 </div>
-                <button className='bg-[#0000FF] text-white font-semibold rounded-full h-12 w-55 mb-5'>1000 SEK</button>
+                <button className='bg-[#0000FF] text-white font-semibold rounded-full h-12 w-55 mb-5'>
+                    {price} SEK
+                </button>
             </div>
         </div>
     );

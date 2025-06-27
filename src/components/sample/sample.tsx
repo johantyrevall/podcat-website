@@ -1,8 +1,8 @@
 import podcat1 from '../../assets/podcat1.jpg'
 
-function Test() {
+function Sample() {
   return (
-    <div className='flex h-screen'>
+    <div id='sample' className='flex h-screen'>
       <div className='w-1/2 flex items-center justify-end pr-10'>
         <img src={podcat1} className='size-150' alt='Podcat image'></img>
       </div>
@@ -21,4 +21,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Sample;

@@ -27,12 +27,12 @@ function Header() {
                     ${show ? '' : '-translate-y-full'}
                     ${atTop ? '' : 'shadow-md'}`}>
             <div className='flex flex-row justify-start items-center p-10 gap-x-8 h-25'>
-                <h1 className='text-3xl font-semibold'>Podcat</h1>
-                <h2 className='text-lg'>Tjänster</h2>
-                <h2 className='text-lg'>Priser</h2>
-                <h2 className='text-lg'>Provklippning</h2>
-                <h2 className='text-lg'>FAQ</h2>
-                <h2 className='text-lg'>Kontakt</h2>
+                <a href='#' className='text-3xl font-semibold hover:text-gray-600 transition-colors'>Podcat</a>
+                <a href='#services' className='text-lg cursor-pointer hover:text-gray-600 transition-colors'>Tjänster</a>
+                <a href='#pricing' className='text-lg cursor-pointer hover:text-gray-600 transition-colors'>Priser</a>
+                <a href='#sample' className='text-lg cursor-pointer hover:text-gray-600 transition-colors'>Provklippning</a>
+                <a href='#faq' className='text-lg cursor-pointer hover:text-gray-600 transition-colors'>FAQ</a>
+                <a href='#contact' className='text-lg cursor-pointer hover:text-gray-600 transition-colors'>Kontakt</a>
             </div>
         </header>
     );

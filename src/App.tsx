@@ -3,7 +3,7 @@ import Header from './components/header/header'
 import LandingPage from './components/landingpage/landingpage'
 import Services from './components/services/services'
 import Price from './components/price/price'
-import Test from './components/test/test'
+import Sample from './components/sample/sample'
 import Faq from './components/faq/faq'
 import Contact from './components/contact/contact'
 import { useEffect } from 'react'
@@ -21,7 +21,7 @@ function App() {
       <LandingPage />
       <Services />
       <Price />
-      <Test />
+      <Sample />
       <Faq />
       <Contact />
     </>
