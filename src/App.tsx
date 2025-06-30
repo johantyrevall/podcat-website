@@ -6,6 +6,7 @@ import Price from './components/price/price'
 import Sample from './components/sample/sample'
 import Faq from './components/faq/faq'
 import Contact from './components/contact/contact'
+import Footer from './components/footer/footer'
 import { useEffect } from 'react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,6 +25,7 @@ function App() {
       <Sample />
       <Faq />
       <Contact />
+      <Footer />
     </>
   )
 }

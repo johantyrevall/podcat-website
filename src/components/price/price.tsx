@@ -11,7 +11,7 @@ const FeatureItem = ({ text }: { text: string }) => (
 
 const paymentOptions = [
   { label: 'Per avsnitt', value: 'per_avsnitt' },
-  { label: 'Per månad', value: 'per_manad' }
+  { label: 'Prenumeration', value: 'per_manad' }
 ];
 
 const audioLengths = [
@@ -33,7 +33,7 @@ function Price() {
     const price = priceTable[paymentType][audioLength];
 
     return (
-        <div id='pricing' className='flex flex-col items-center h-screen bg-[#F0F0F0]'>
+        <div id='pricing' className='flex flex-col items-center min-h-screen py-20 bg-[#F0F0F0]'>
             <h2 className='text-6xl font-medium mt-10 mb-5'>Prisexempel</h2>
             <p className='text-xl'>Betala per avsnitt eller per månad</p>
             <div className='flex flex-row gap-x-8 mb-5 mt-3'>
@@ -60,7 +60,7 @@ function Price() {
             <div className='bg-[#E9EBF8] flex flex-col items-center justify-center w-xl p-5 shadow-xl'>
                 <p className='text-lg'>Från</p>
                 <div className='flex flex-row items-center'>
-                    <p className='text-5xl font-bold'>{price} SEK</p>
+                    <p className='text-5xl font-semibold'>{price} SEK</p>
                     <p className='text-lg'>
                         {paymentType === 'per_avsnitt' ? '/avsnitt' : '/avsnitt'}
                     </p>
@@ -68,14 +68,14 @@ function Price() {
             </div>
             <div className='bg-white w-xl pt-2 shadow-xl'>
                 <FeatureItem text="Intro/Outro" />
-                <FeatureItem text="Genomlyssnad redigering" />
-                <FeatureItem text="Volymjustering enlig branschstandard" />
-                <FeatureItem text="Snabb leverans" />
-                <FeatureItem text="Mixning" />
-                <FeatureItem text="Borttagning av utfyllnadsljud" />
+                <FeatureItem text="Mixning " />
+                <FeatureItem text="Mastering enligt branschstandard " />
                 <FeatureItem text="Brusreducering" />
+                <FeatureItem text="Volymjustering " />
+                <FeatureItem text="Borttagning av utfyllnadsljud" />
                 <FeatureItem text="ID3-taggning" />
                 <FeatureItem text="Kostnadsfria korrigeringar" />
+                <FeatureItem text="Snabb leverans" />
                 <div className='border-2 border-[#E9EBF8] mx-20 m-3 rounded-full'></div>
             </div>
             <div className='bg-white w-xl flex flex-col items-center justify-center shadow-xl'>

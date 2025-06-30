@@ -2,7 +2,7 @@ import podcat1 from '../../assets/podcat1.jpg'
 
 function Sample() {
   return (
-    <div id='sample' className='flex h-screen'>
+    <div id='sample' className='flex min-h-screen py-20'>
       <div className='w-1/2 flex items-center justify-end pr-10'>
         <img src={podcat1} className='size-150' alt='Podcat image'></img>
       </div>
@@ -12,10 +12,9 @@ function Sample() {
             Testa vår tjänst kostnadsfritt
           </h2>
           <a className='text-lg'>
-            Vi erbjuder ett gratis provavsnitt så du kan se vad som passar din podcast bäst. Kontakta oss så redigerar vi ett avsnitt, helt utan förpliktelser. Lorem ipsum viva la miosa dicken hülfe.
+          Vi erbjuder ett gratis provavsnitt till alla nya kunder. Kontakta oss så redigerar vi ett avsnitt, kostnadsfritt och utan förpliktelser.
           </a>
         </div>
-
       </div>
     </div>
   );
