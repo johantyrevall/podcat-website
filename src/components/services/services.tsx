@@ -3,6 +3,8 @@ import { faScissors } from '@fortawesome/free-solid-svg-icons';
 import { faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import { faWaveSquare } from '@fortawesome/free-solid-svg-icons';
+import WaveSurferPlayer from './WaveSurferPlayer';
+
 
 function Services() {
   return (
@@ -35,6 +37,19 @@ function Services() {
           <h2 className='text-3xl font-medium m-4'>Samarbete</h2>
           <div className='w-7/9 flex-1 overflow-auto'>
             <p>Vi arbetar alltid efter era önskemål, oavsett om du har särskilda instruktioner eller vill göra sista ändringar innan publicering. Vi är inte nöjda förrän du är det.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        {/* <h3 className='text-4xl font-medium mb-6'>Lyssna på skillnaden</h3> */}
+        <div className='flex flex-col md:flex-row items-center justify-center gap-30'>
+          <div className='flex flex-col items-start'>
+            <h4 className='mb-2 ms-2'>Före</h4>
+            <WaveSurferPlayer src='/before.mp3' peaksUrl='/audio-peaks-before.json' />
+          </div>
+          <div className='flex flex-col items-start'>
+            <h4 className='mb-2 ms-2'>Efter</h4>
+            <WaveSurferPlayer src='/after.mp3' peaksUrl='/audio-peaks-before.json' />
           </div>
         </div>
       </div>

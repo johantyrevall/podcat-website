@@ -8,7 +8,7 @@ function Contact() {
                     <h2 className='text-2xl mb-7'>
                         Vi vill gärna prata med dig. Lämna dina uppgifter nedan eller maila 
                         <a href='mailto:hej@podcat.se' className=' text-[#0000FF] hover:underline ml-1'>hej@podcat.se</a>
-                        {' '}så hör vi av oss
+                        {' '}så hör vi av oss.
                     </h2>
                 </div>
                 <div className='flex flex-row justify-between items-center w-full'>

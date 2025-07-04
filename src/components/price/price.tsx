@@ -25,10 +25,13 @@ const priceTable = {
   per_manad: { 30: 800, 60: 1200, 90: 1600 }
 };
 
+
 function Price() {
-    // const [price, setPrice ] = useState(1000);
-    const [paymentType, setPaymentType] = useState('per_avsnitt');
-    const [audioLength, setAudioLength] = useState(30);
+    type PaymentType = 'per_avsnitt' | 'per_manad';
+    type AudioLength = 30 | 60 | 90;
+
+    const [paymentType, setPaymentType] = useState<PaymentType>('per_avsnitt');
+    const [audioLength, setAudioLength] = useState<AudioLength>(30);
 
     const price = priceTable[paymentType][audioLength];
 
@@ -45,7 +48,7 @@ function Price() {
                                     ? 'bg-[#0000FF] text-white font-semibold rounded-full h-12 w-55 cursor-pointer'
                                     : 'bg-white border-2 hover:bg-blue-50 border-[#0000FF] font-semibold rounded-full h-12 w-55 cursor-pointer'
                             }
-                            onClick={() => setPaymentType(option.value)}
+                            onClick={() => setPaymentType(option.value as PaymentType)}
                         >
                             {option.label}
                         </button>
