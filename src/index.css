@@ -16,7 +16,15 @@
   -moz-osx-font-smoothing: grayscale; */
 }
 
-
+@media (max-width: 767px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
 /* 
 a {
   font-weight: 500;
