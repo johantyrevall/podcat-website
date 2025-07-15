@@ -47,7 +47,7 @@ function Header() {
             <div className="flex flex-row items-center p-6 md:p-10 h-20 md:h-25">
                 {/* Left: Logo and nav links */}
                 <div className="flex flex-row items-center flex-grow">
-                    <Link to="/" className="text-3xl font-semibold hover:text-gray-800 transition-colors mr-4">Podcat</Link>
+                    <Link to="/" className="text-3xl font-semibold hover:text-gray-800 transition-colors mr-8">Podcat</Link>
                     <nav className="hidden md:flex flex-row gap-x-8 items-center">
                         <Link to="/#services" className='text-lg cursor-pointer hover:text-gray-800 transition-colors' onClick={e => handleNavClick(e, 'services')}>Tjänster</Link>
                         <Link to="/#pricing" className='text-lg cursor-pointer hover:text-gray-800 transition-colors' onClick={e => handleNavClick(e, 'pricing')}>Priser</Link>

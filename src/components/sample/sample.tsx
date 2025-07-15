@@ -2,16 +2,16 @@ import podcat1 from '../../assets/podcat1.jpg'
 
 function Sample() {
   return (
-    <div id='sample' className='flex min-h-screen py-20'>
-      <div className='w-1/2 flex items-center justify-end pr-10'>
-        <img src={podcat1} className='size-150' alt='Podcat image'></img>
+    <div id='sample' className='flex md:flex-row flex-col-reverse md:min-h-screen md:py-20 py-10 md:mb-10'>
+      <div className='md:w-1/2 flex items-center md:justify-end justify-center md:pr-10'>
+        <img src={podcat1} className='md:size-150 size-75 mt-5' alt='Podcat image'></img>
       </div>
-      <div className="w-1/3 flex flex-row items-center justify-start pl-10">
-        <div>
-          <h2 className="text-7xl font-medium leading-tight">
+      <div className="md:w-1/3 flex flex-row items-center md:justify-start justify-center md:pl-10">
+        <div className='px-11'>
+          <h2 className="md:text-7xl text-4xl font-medium md:leading-tight mb-2">
             Testa vår tjänst kostnadsfritt
           </h2>
-          <a className='text-lg'>
+          <a className='md:text-2xl text-base'>
           Vi erbjuder ett gratis provavsnitt till alla nya kunder. Kontakta oss så redigerar vi ett avsnitt, kostnadsfritt och utan förpliktelser.
           </a>
         </div>

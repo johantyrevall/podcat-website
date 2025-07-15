@@ -107,7 +107,8 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
   };
 
   return (
-    <div className="flex items-center border-1 border-gray-300 rounded-4xl p-4 w-full max-w-3xl">
+    // <div className="flex items-center border-1 border-gray-300 rounded-4xl p-4 w-full max-w-3xl">
+      <div className="flex flex-wrap items-center border-1 border-gray-300 rounded-4xl md:p-4 p-0.5 w-full max-w-3xl overflow-x-auto">
       {/* Play/Pause Button */}
       <button
         onClick={handlePlayPause}
@@ -123,10 +124,10 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
       {/* Time */}
       <span className="w-12 text-center text-gray-600 ">{formatTime(currentTime)}</span>
       {/* Waveform */}
-      <div className="flex-1 mx-4">
+      <div className="flex-1 min-w-0 md:mx-4">
         <div
           ref={containerRef}
-          className="w-75"
+          className="md:w-75"
         />
         {/* Progress Bar */ }
         {/* <input
@@ -142,7 +143,7 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
       {/* Duration */}
       <span className="w-12 text-center text-gray-600">{formatTime(duration)}</span>
       {/* Volume */}
-      <div className="flex items-center ml-4">
+      <div className="flex items-center md:ml-4">
         <FontAwesomeIcon icon={faVolumeUp} className="mr-2 text-gray-600" />
         <input
           type="range"

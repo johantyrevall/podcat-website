@@ -1,14 +1,20 @@
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import poddr5 from '../../assets/poddr5.png'
+
 
 
 function LandingPage() {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen py-20 bg-[#E9EBF8]'>
+    <div
+    // <div className='flex flex-col items-center md:justify-center md:min-h-screen py-20 bg-[#E9EBF8]'>
+      className="flex flex-col items-center md:justify-center md:min-h-screen py-20 bg-cover bg-center"
+      style={{ backgroundImage: `url(${poddr5})` }}
+    >
       <div className='w-full md:w-1/2 text-center'>
         <h1 className='font-medium md:text-8xl/28 text-5xl m-5'>Vi klipper er podcast</h1>
       </div>
-      <div className='w-full md:w-3/8 text-center m-5'>
+      <div className='w-full md:w-3/10 text-center m-5'>
         <p className='md:text-2xl md:mx-0 text-base mx-5'>Vi på Podcat är podcastklippare med mångårig erfarenhet. Vi förvandlar er inspelning till ett avsnitt med kristallklart ljud, redo för publicering.</p>
       </div>
       <div className='flex flex-col gap-4 md:flex-row w-3/4 md:w-auto md:gap-x-8 md:h-24 m-3 mb-10 md:mb-0'>

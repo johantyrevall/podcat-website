@@ -40,22 +40,21 @@ function Faq() {
   ]
 
   return (
-    <div id="faq" className='flex flex-col items-center min-h-screen py-20 bg-[#E9EBF8]'>
-      <div className='w-2/4 pt-20'>
-        <h2 className='text-6xl font-medium mt-10 mb-5 self-start'>FAQ - Vanliga frågor</h2>
+    <div id="faq" className='flex flex-col items-center md:min-h-screen py-10 md:py-20 bg-[#E9EBF8]'>
+      <div className='md:w-2/4 md:pt-20 mx-5 md:mx-0'>
+        <h2 className='text-3xl md:text-6xl font-medium md:mt-10 mb-5 self-start'>FAQ - Vanliga frågor</h2>
         <div className=''>
           {questions.map((q) => (
             <motion.div 
               key={q.id}
-              className='flex flex-col text-lg border-b-1 border-[#00000080] py-4'
+              className='flex flex-col md:text-lg border-b-1 border-[#00000080] py-4'
               layout
             >
-              <div className='flex flex-row items-center'>
+              <div className='flex justify-between items-center gap-4'>
                 <p className={`${activeQuestion === q.id ? 'font-semibold' : ''}`}>
                   {q.question}
                 </p>
-                <button className='ml-auto border-1 border-[#00000080] rounded-xl aspect-square w-10 flex items-center justify-center
-                text-xl cursor-pointer hover:bg-[#F0F0F0]'
+                <button className='shrink-0 border-1 border-[#00000080] rounded-xl aspect-square w-10 flex items-center justify-center text-lg cursor-pointer hover:bg-[#F0F0F0]'
                 onClick={() => 
                   setActiveQuestion(activeQuestion === q.id ? null : q.id)
                 }>
@@ -84,7 +83,7 @@ function Faq() {
                     initial={{ opacity: 0, height: 0, marginTop: 0 }}
                     animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
                     exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
                     <p>{q.answer}</p>
