@@ -56,9 +56,9 @@ function Contact() {
 
   return (
     <div id='contact' className='flex flex-col items-center md:min-h-screen md:py-20 py-10 bg-[#F0F0F0]'>
-      <div className='w-4/5'>
+      <div className='w-6/7'>
         <div className='md:pt-20 md:w-150 self-start'>
-          <h2 className='md:text-2xl text-xl md:mb-7 mb-5'>
+          <h2 className='md:text-2xl text-xl md:mb-7 mb-5 px-2'>
             Vi vill gärna prata med dig. Lämna dina uppgifter nedan eller maila
             <a href='mailto:hej@podcat.se' className='text-[#0000FF] hover:underline ml-1'>hej@podcat.se</a>
             {' '}så hör vi av oss.
@@ -90,15 +90,15 @@ function Contact() {
               id='message'
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className={`w-full border-1 border-gray-300 min-h-[100px] max-h-[290px] md:text-xl px-4 py-2 pb-5 resize-none md:resize-y rounded-xl ${emailError ? '-mt-3' : 'my-3'}`}
+              className={`w-full border-1 border-gray-300 md:h-[290px] h-[100px] md:text-xl px-4 py-2 pb-5 resize-none rounded-xl ${emailError ? '-mt-3' : 'mt-3'}`}
               placeholder='Meddelande...'
             />
-            <div className='flex items-end mt-auto gap-x-4'>
-              <div>
+            <div className='flex md:flex-row flex-col md:items-end items-center mt-auto gap-x-4 relative'>
+              <div className='md:mt-0 mt-1 md:mb-2 mb-3'>
                 <div style={{ height: captchaError ? 'auto' : '20px' }}>
                   {captchaError && <p className="text-red-600 text-sm">{captchaError}</p>}
                 </div>
-                <div style={{ transform: "scale(1)", transformOrigin: "0 0" }}>
+                <div style={{ transform: "", transformOrigin: "0 0" }}>
                   {!sent && (
                     <ReCAPTCHA
                       sitekey={siteKey}
@@ -112,12 +112,14 @@ function Contact() {
                   )}
                 </div>
               </div>
-              {!sent && (
-                <button type='submit' className='bg-black text-white rounded-xl h-10 w-35 cursor-pointer m-3 md:m-0'>
-                  Skicka
-                </button>
-              )}
-              {sent && <p className='text-green-600 text-center w-full'>Tack för ditt meddelande! Vi har tagit emot det och återkommer till dig så snart vi kan.</p>}
+              <div className='md:absolute md:left-1/2 md:transform md:-translate-x-1/2'>
+                {!sent && (
+                  <button type='submit' className='bg-black text-white rounded-xl h-10 w-35 cursor-pointer m-3 md:m-2'>
+                    Skicka
+                  </button>
+                )}
+                {sent && <p className='text-green-600 text-center w-full'>Tack för ditt meddelande! Vi har tagit emot det och återkommer till dig så snart vi kan.</p>}
+              </div>
             </div>
           </form>
           <div>
