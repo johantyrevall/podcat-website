@@ -1,6 +1,8 @@
 import {useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Header() {
     const [show, setShow] = useState(true);
@@ -26,6 +28,19 @@ function Header() {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [mobileMenuOpen]);
 
     const handleNavClick = (e: React.MouseEvent, section: string) => {
         if (location.pathname === '/') {
@@ -67,8 +82,15 @@ function Header() {
             </div>
             {/* Mobile menu overlay */}
             {mobileMenuOpen && (
-                <div className='fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden' onClick={() => setMobileMenuOpen(false)}>
-                    <nav className='absolute top-0 left-0 w-3/4 max-w-xs h-full bg-white shadow-lg flex flex-col pt-24 gap-y-6 px-8 text-lg' onClick={e => e.stopPropagation()}>
+                <div className='fixed inset-0 bg-black bg-opacity-40 z-50 md:hidden' onClick={() => setMobileMenuOpen(false)}>
+                    <nav className='absolute top-0 left-0 w-full h-full bg-white shadow-lg flex flex-col pt-24 gap-y-6 px-8 text-lg' onClick={e => e.stopPropagation()}>
+                        <button 
+                            className="absolute top-6 right-6 text-2xl text-black focus:outline-none"
+                            onClick={() => setMobileMenuOpen(false)}
+                            aria-label="Close menu"
+                        >
+                            <FontAwesomeIcon icon={faXmark} />
+                        </button>
                         <Link to="/#services" className='hover:text-gray-800 transition-colors' onClick={e => handleNavClick(e, 'services')}>Tjänster</Link>
                         <Link to="/#pricing" className='hover:text-gray-800 transition-colors' onClick={e => handleNavClick(e, 'pricing')}>Priser</Link>
                         <Link to="/#sample" className='hover:text-gray-800 transition-colors' onClick={e => handleNavClick(e, 'sample')}>Provklippning</Link>
