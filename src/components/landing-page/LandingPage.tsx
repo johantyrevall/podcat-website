@@ -1,6 +1,6 @@
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import poddr5 from '../../assets/poddr5.png'
+import poddr65 from '../../assets/poddr65.png'
 
 
 
@@ -9,7 +9,7 @@ function LandingPage() {
     <div
     // <div className='flex flex-col items-center md:justify-center md:min-h-screen py-20 bg-[#E9EBF8]'>
       className="flex flex-col items-center md:justify-center md:min-h-screen py-20 bg-cover bg-center"
-      style={{ backgroundImage: `url(${poddr5})` }}
+      style={{ backgroundImage: `url(${poddr65})` }}
     >
       <div className='w-full md:w-1/2 text-center'>
         <h1 className='font-medium md:text-8xl/28 text-5xl m-5'>Vi klipper er podcast</h1>
