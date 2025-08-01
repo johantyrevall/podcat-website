@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
@@ -8,14 +9,14 @@ const Footer: React.FC = () => {
           <span>© Podcat {new Date().getFullYear()}</span>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-10 text-sm">
-          <a href="/privacy-policy" className="hover:text-[#F0F0F0] transition-colors">Integritetspolicy</a>
-          <a href="/terms-of-service" className="hover:text-[#F0F0F0] transition-colors">Användarvillkor</a>
-          <a href="/contact" className="hover:text-[#F0F0F0] transition-colors">Kontakt</a>
-          <a href="/about" className="hover:text-[#F0F0F0] transition-colors">Om oss</a>
+          <Link to="/privacy-policy" className="hover:text-[#F0F0F0] transition-colors">Integritetspolicy</Link>
+          <Link to="/terms-of-service" className="hover:text-[#F0F0F0] transition-colors">Användarvillkor</Link>
+          <Link to="/contact" className="hover:text-[#F0F0F0] transition-colors">Kontakt</Link>
+          <Link to="/about" className="hover:text-[#F0F0F0] transition-colors">Om oss</Link>
         </div>
       </div>
     </footer>
   );
 };
 
-export default Footer; 
+export default Footer;
