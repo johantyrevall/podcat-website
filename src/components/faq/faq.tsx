@@ -1,6 +1,6 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { act, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from "react-router-dom";
 
