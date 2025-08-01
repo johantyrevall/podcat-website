@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import poddr from '../../assets/poddr.png';
+import poddr from '../../assets/poddr.jpeg';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 function Contact() {
