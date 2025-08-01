@@ -54,7 +54,7 @@ function App() {
   }, [])
 
   return (
-    <Router>
+    <Router basename='/podcat-website'>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
