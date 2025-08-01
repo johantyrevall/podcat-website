@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import './App.css'
-import Header from './components/header/Header'
+import Header from './components/header/temp name header'
 import LandingPage from './components/landing-page/LandingPage'
-import Services from './components/services/Services'
-import Price from './components/price/Price'
-import Sample from './components/sample/Sample'
-import Faq from './components/faq/Faq'
-import Contact from './components/contact/Contact'
-import Footer from './components/footer/Footer'
+import Services from './components/services/temp name services'
+import Price from './components/price/temp name price'
+import Sample from './components/sample/temp name sample'
+import Faq from './components/faq/temp name faq'
+import Contact from './components/contact/temp name contact'
+import Footer from './components/footer/temp name footer'
 import PrivacyPolicy from './components/privacy-policy/PrivacyPolicy';
 import TermsOfService from './components/terms-of-service/TermsOfService';
 import { useEffect } from 'react'
