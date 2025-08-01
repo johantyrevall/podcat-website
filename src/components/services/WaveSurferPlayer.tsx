@@ -6,6 +6,8 @@ import { faPlay, faPause, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 interface WaveSurferPlayerProps {
   src: string;
   peaksUrl?: string;
+  isActive: boolean;
+  onPlay: () => void;
 }
 
 const formatTime = (seconds: number) => {
@@ -14,7 +16,7 @@ const formatTime = (seconds: number) => {
   return `${m}:${s.toString().padStart(2, '0')}`;
 };
 
-const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) => {
+const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl, isActive, onPlay }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const waveSurferRef = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -42,7 +44,7 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
           container: containerRef.current,
           waveColor: '#a3a3a3',
           progressColor: '#43BFA3',
-          height: 32,
+          height: 40,
           barWidth: 2,
           cursorColor: '#43BFA3',
         });
@@ -65,8 +67,8 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
         setCurrentTime(waveSurfer.getCurrentTime());
       });
       waveSurfer.on('ready', () => {
-        const peaks = waveSurfer.exportPeaks();
-        console.log(JSON.stringify(peaks)); // Copy this
+        // const peaks = waveSurfer.exportPeaks();
+        // console.log('peaks: ', JSON.stringify(peaks)); // Copy this
         setDuration(waveSurfer.getDuration());
       });
   
@@ -90,10 +92,21 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl }) =>
   }, [volume]);
 
   const handlePlayPause = () => {
-    if (waveSurferRef.current) {
-      waveSurferRef.current.playPause();
+    if (!waveSurferRef.current) return;
+  
+    if (!isPlaying) {
+      onPlay(); // Notify parent you're playing now
+      waveSurferRef.current.play();
+    } else {
+      waveSurferRef.current.pause();
     }
   };
+
+  useEffect(() => {
+    if (!isActive && waveSurferRef.current?.isPlaying()) {
+      waveSurferRef.current.pause();
+    }
+  }, [isActive]);
 
   // const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   if (waveSurferRef.current && duration) {

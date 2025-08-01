@@ -2,15 +2,16 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { act, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from "react-router-dom";
 
 function Faq() {
-  const [activeQuestion, setActiveQuestion] = useState<number | null> (null);
+  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
 
   const questions = [
     {
       id: 1,
       question: 'Hur går det till när Podcat klipper vår podcast? ',
-      answer: 'Ni laddar upp och skickar er ljudfil till oss på Podcat via Wetransfer. Vi klipper, redigerar och lägger till jinglar efter era önskemål. Därefter skickar vi över det färdigställda avsnittet - helt redo för publicering. ',
+      answer: 'Ni laddar upp och skickar er ljudfil till oss på Podcat via valfri fildelningstjänst. Vi klipper, redigerar och lägger till jinglar efter era önskemål. Därefter skickar vi över det färdigställda avsnittet - helt redo för publicering. ',
     },
     {
       id: 2,
@@ -20,7 +21,14 @@ function Faq() {
     {
       id: 3,
       question: 'Vad ingår i er redigering?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      answer: (
+        <>
+          Vi klipper bort felsägningar, pauser och störande ljud. Ljudspåren synkroniseras och optimeras med mix, kompression och brusreducering. Allt anpassas efter dina önskemål för ett professionellt poddavsnitt. Läs mer om vår{' '}
+          <Link to='/#services' className='text-[#0000FF]'>
+            podcastredigering här
+          </Link>.
+        </>
+      ),
     },
     {
       id: 4,
@@ -29,11 +37,17 @@ function Faq() {
     },
     {
       id: 5,
-      question: 'Kan jag testa er tjänst gratis?',
-      answer: 'Ja! Vi erbjuder alla nya kunder ett kostnadsfritt avsnitt.',
+      question: 'Hur fungerar prenumeration?',
+      answer: 'Om du publicerar avsnitt regelbundet kan du teckna en prenumeration hos oss. Då betalar du ett fast månadspris och varje poddavsnitt blir billigare jämfört med att köpa dem enskilt. Prenumerationen passar perfekt för dig som vill sänka kostnaden per avsnitt och slippa tänka på engångsbetalningar.',
     },
     {
       id: 6,
+      question: 'Kan jag testa er tjänst gratis?',
+      answer: 'Ja! Vi erbjuder alla nya kunder ett kostnadsfritt avsnitt.',
+    },
+
+    {
+      id: 7,
       question: 'Kan det tillkomma kostnader?',
       answer: 'Nej, det tillkommer inga kostnader under tiden som vi klipper er podd. Redigering efter feedback eller sena önskemål ingår i tjänsten, och du vet alltid exakt hur mycket du kommer behöva betala när du gör din beställning. ',
     },
@@ -45,19 +59,21 @@ function Faq() {
         <h2 className='text-3xl md:text-6xl font-medium md:mt-10 mb-5 self-start'>FAQ - Vanliga frågor</h2>
         <div className=''>
           {questions.map((q) => (
-            <motion.div 
+            <motion.div
               key={q.id}
               className='flex flex-col md:text-lg border-b-1 border-[#00000080] py-4'
               layout
             >
-              <div className='flex justify-between items-center gap-4'>
+              <div
+                className='flex justify-between items-center gap-4 cursor-pointer'
+                onClick={() =>
+                  setActiveQuestion(activeQuestion === q.id ? null : q.id)
+                }
+              >
                 <p className={`${activeQuestion === q.id ? 'font-semibold' : ''}`}>
                   {q.question}
                 </p>
-                <button className='shrink-0 border-1 border-[#00000080] rounded-xl aspect-square w-10 flex items-center justify-center text-lg cursor-pointer hover:bg-[#F0F0F0]'
-                onClick={() => 
-                  setActiveQuestion(activeQuestion === q.id ? null : q.id)
-                }>
+                <button className='shrink-0 border-1 border-[#00000080] rounded-xl aspect-square w-10 flex items-center justify-center text-lg cursor-pointer hover:bg-[#F0F0F0]'>
                   {activeQuestion === q.id ? (
                     <motion.div
                       initial={{ rotate: 0 }}

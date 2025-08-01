@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faScissors, faMicrophoneLines, faSliders, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import WaveSurferPlayer from './WaveSurferPlayer';
+import { useState } from 'react';
 
 const services = [
   {
@@ -30,6 +31,8 @@ const services = [
 ];
 
 function Services() {
+  const [activePlayer, setActivePlayer] = useState<'before' | 'after' | null>(null);
+  
   return (
     <div id='services' className='px-4 md:px-50 min-h-screen py-10 md:py-20'>
       <h2 className='text-3xl md:text-6xl font-medium flex flex-col md:items-start items-center justify-start md:pt-20'>Vad vi erbjuder</h2>
@@ -53,11 +56,21 @@ function Services() {
         <div className='flex flex-col md:flex-row items-center justify-center gap-6 md:gap-30 mt-6 md:mt-0'>
           <div className='flex flex-col items-start w-full md:w-auto'>
             <h4 className='mb-2 ms-2'>Före</h4>
-            <WaveSurferPlayer src='/before.mp3' peaksUrl='/audio-peaks-before.json' />
+            <WaveSurferPlayer
+            src='/podcat before 2.mp3'
+            peaksUrl='audio-peaks-before-3.json'
+            isActive={activePlayer === 'before'}
+            onPlay={() => setActivePlayer('before')}
+          />
           </div>
           <div className='flex flex-col items-start w-full md:w-auto'>
             <h4 className='mb-2 ms-2'>Efter</h4>
-            <WaveSurferPlayer src='/after.mp3' peaksUrl='/audio-peaks-before.json' />
+            <WaveSurferPlayer
+            src='/podcat after 2.mp3'
+            peaksUrl='audio-peaks-after-3.json'
+            isActive={activePlayer === 'after'}
+            onPlay={() => setActivePlayer('after')}
+          />
           </div>
         </div>
       </div>
