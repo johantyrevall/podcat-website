@@ -12,15 +12,19 @@ function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setAtTop(window.scrollY === 0);
-
-            if (window.scrollY < lastScrollY) {
-                setShow(true);
-            } else if (window.scrollY > lastScrollY) {
-                setShow(false);
+            const currentScrollY = window.scrollY;
+            setAtTop(currentScrollY === 0);
+          
+            if (currentScrollY === 0) {
+              setShow(true);
+            } else if (currentScrollY < lastScrollY) {
+              setShow(true);
+            } else if (currentScrollY > lastScrollY) {
+              setShow(false);
             }
-            setLastScrollY(window.scrollY);
-        };
+          
+            setLastScrollY(currentScrollY);
+          };
 
         window.addEventListener('scroll', handleScroll);
 
