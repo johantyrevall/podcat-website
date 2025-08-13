@@ -33,7 +33,7 @@ function Header() {
       }
 
       setLastScrollY(currentScrollY);
-    }, 100),
+    }, 10),
     [lastScrollY]
   );
 
@@ -123,7 +123,6 @@ function Header() {
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
           >
-            <FaXmark />
           </button>
           {menuItems.map(({ label, to, delay, id }) => (
             <Link
