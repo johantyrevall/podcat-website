@@ -119,6 +119,11 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl, isAc
     setVolume(parseFloat(e.target.value));
   };
 
+  const handleVolumeTouch = (e: React.TouchEvent<HTMLInputElement>) => {
+  const value = parseFloat(e.currentTarget.value);
+  setVolume(value);
+};
+
   return (
     // <div className="flex items-center border-1 border-gray-300 rounded-4xl p-4 w-full max-w-3xl">
       <div className="flex flex-wrap items-center border-1 border-gray-300 rounded-4xl md:p-4 p-0.5 w-full max-w-3xl overflow-x-auto">
@@ -165,6 +170,8 @@ const WaveSurferPlayer: React.FC<WaveSurferPlayerProps> = ({ src, peaksUrl, isAc
           step="0.01"
           value={volume}
           onChange={handleVolume}
+          onTouchMove={handleVolumeTouch}
+          onTouchEnd={handleVolumeTouch}
           className="accent-[#43BFA3] w-16 cursor-pointer"
         />
       </div>

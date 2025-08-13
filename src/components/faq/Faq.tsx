@@ -7,6 +7,18 @@ import { Link } from "react-router-dom";
 function Faq() {
   const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
 
+    const handleNavClick = (e: React.MouseEvent, section: string) => {
+    if (location.pathname === '/') {
+        e.preventDefault();
+        const el = document.getElementById(section);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    } else {
+        // navigate to /#section
+    }
+  };
+
   const questions = [
     {
       id: 1,
@@ -24,7 +36,7 @@ function Faq() {
       answer: (
         <>
           Vi klipper bort felsägningar, pauser och störande ljud. Ljudspåren synkroniseras och optimeras med mix, kompression och brusreducering. Allt anpassas efter dina önskemål för ett professionellt poddavsnitt. Läs mer om vår{' '}
-          <Link to='/#services' className='text-[#0000FF]'>
+          <Link to='/#services' className='text-[#0000FF]' onClick={e => handleNavClick(e, 'services')}>
             podcastredigering här
           </Link>.
         </>

@@ -23,6 +23,22 @@ const MainLayout = () => (
   </>
 );
 
+const TopScrollLayout = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
 function Home() {
   const location = useLocation();
   useEffect(() => {
@@ -53,17 +69,19 @@ function App() {
     AOS.init();
   }, [])
 
-  return (
+return (
     <Router>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+        </Route>
+        <Route element={<TopScrollLayout />}>
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
         </Route>
       </Routes>
     </Router>
-  )
+  );
 }
 
 export default App
