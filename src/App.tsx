@@ -10,10 +10,11 @@ import Contact from './components/contact/Contact'
 import Footer from './components/footer/Footer'
 import PrivacyPolicy from './components/privacy-policy/PrivacyPolicy';
 import TermsOfService from './components/terms-of-service/TermsOfService';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ReactCookieBot from 'react-cookiebot';
 
 const MainLayout = () => (
   <>
@@ -41,6 +42,7 @@ const TopScrollLayout = () => {
 
 function Home() {
   const location = useLocation();
+  const [canShowContact, setCanShowContact] = useState(false);
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -52,6 +54,24 @@ function Home() {
       }
     }
   }, [location]);
+
+  useEffect(() => {
+    function checkConsent() {
+      setCanShowContact(!!(window.Cookiebot?.consent?.marketing));
+    }
+
+    checkConsent();
+    window.addEventListener('CookiebotOnConsentReady', checkConsent);
+    window.addEventListener('CookiebotOnAccept', checkConsent);
+    window.addEventListener('CookiebotOnDecline', checkConsent);
+
+    return () => {
+      window.removeEventListener('CookiebotOnConsentReady', checkConsent);
+      window.removeEventListener('CookiebotOnAccept', checkConsent);
+      window.removeEventListener('CookiebotOnDecline', checkConsent);
+    };
+  }, []);
+
   return (
     <>
       <LandingPage />
@@ -59,7 +79,7 @@ function Home() {
       <Price />
       <Sample />
       <Faq />
-      <Contact />
+      {canShowContact ? <Contact /> : <p>Acceptera marknadsföringscookies för att se vårt kontaktformulär.</p>}
     </>
   );
 }
@@ -69,18 +89,23 @@ function App() {
     AOS.init();
   }, [])
 
-return (
-    <Router>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-        </Route>
-        <Route element={<TopScrollLayout />}>
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-        </Route>
-      </Routes>
-    </Router>
+  const domainGroupId = '8e864da2-a6fe-48f9-bf74-0be1668e83a2';
+
+  return (
+    <>
+      <ReactCookieBot domainGroupId={domainGroupId}/>
+      <Router>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+          <Route element={<TopScrollLayout />}>
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
